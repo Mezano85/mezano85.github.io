@@ -1,0 +1,70 @@
+{
+    "name" : "Francisco García Mezano",
+    "photo" : "", 
+    "iam" : ["Estadístico", "Data Scientist"],
+    "birthdate" : "3 Ene 1985",
+    "age" : 37,
+    "study" : "Lic. en estadística",
+    "email" : "mezano@gmail.com",
+    "website" : "mezano85.github.io",
+    "telephone" : "+52 -- --- ---",
+    "city" : "Querétaro, MX",
+    "twitter" : "https://twitter.com/fmezano",
+    "facebook" : "https://www.facebook.com/fmezano",
+    "telegram" : "https://telegram.me/mezano",
+    "linkedin" : "https://www.linkedin.com/in/mezano/",
+    "description" : "Data Scientist con 10+ años de experiencia interpretando y analizando datos para conducir a mejores decisiones. Conocimientos solidos de Estadística Matemática.",
+    "activity" : {
+        "name" : "Data Scientist",
+        "description" : "Entre mis actividades como data-scientist he desarrollado algoritmos de forecasting, regresión y algoritmos de clusterización utilizando tanto R como Python para el desarrollo de estos, por medio de métodos estadísticos y métodos de machine learning.",
+    },
+    "skills" : {
+        "introduction" : "En mi experiencia científico de datos, he realizado: algoritmos para optimización de rutas, análisis inventarios en base a las ventas, homologación de información de diferentes fuentes de datos. He podido estar de primera mano en todo el flujo del proceso, recolección de datos, homologación y limpieza, análisis y entrega de resultados. Todo esto apoyandome de herramientas como:",
+        "tools" : [
+            { "tool" : "Tableau" , "value" : 100},
+            { "tool" : "Power Bi" , "value" : 100},
+            { "tool" : "Pentaho" , "value" : 60},
+            { "tool" : "Python" , "value" : 90},
+            { "tool" : "R" , "value" : 90},
+            { "tool" : "SQL" , "value" : 60}
+        ]
+    },
+    "resume" : {
+        "introduction" : "Acontinuación, Algunos datos sobre mi historia profesional!!",
+        "jobs" : [
+            {
+                "period" : "2022 - Actual",
+                "position" : "Data Team Lead",
+                "company" : "Nowports",
+                "activities" : [
+                    "Querétaro, Querétaro, MX", 
+                    "Telegram: @Mezano", 
+                    "mezano@gmail.com"
+                ]
+            },
+            {
+                "period" : "2012 - 2022",
+                "position" : "Data Science Manager",
+                "company" : "Storecheck",
+                "activities" : [
+                    "Atención al cliente, atención de requerimientos de información de levantamientos en puntos de venta.", 
+                    "Realización de tableros de mediciones en puntos de venta y cruce de información de ventas, exhibiciones, asistencia de promotoría, inventarios.", 
+                    "Modelos de Pronósticos de ventas, Faltantes o excedentes de inventarios.",
+                    "Modelos de optimización de captura en punto de venta.",
+                    "Modelos de optimización de rutas de promotoría."
+                ]
+            },
+            {
+                "period" : "2010 - 2012",
+                "position" : "Consultor Independiente",
+                "company" : "Consultor de Riegos Financieros"
+            },
+            {
+                "period" : "2006 - 2010",
+                "position" : "Gerente de Administración de Riesgos",
+                "company" : "Financiera Ahorros Bienestar"
+            }
+        ]
+
+    }
+}
