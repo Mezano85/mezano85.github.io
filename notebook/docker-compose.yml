@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  jupyter:
+    build: .
+    container_name: jupyter
+    env_file:
+      - .env
+    volumes:
+      - '..:/usr/src/data'
+    ports:
+      - '8888:8888'
+    command: "start-notebook.sh --NotebookApp.token="

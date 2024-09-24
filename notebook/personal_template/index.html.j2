@@ -1,0 +1,309 @@
+{%- extends 'base.html.j2' -%}
+{% from 'mathjax.html.j2' import mathjax %}
+{% from 'mermaidjs.html.j2' import mermaid_js %}
+{% from 'jupyter_widgets.html.j2' import jupyter_widgets %}
+
+{%- block header -%}
+<!DOCTYPE html>
+<html lang="{{ resources.language_code }}">
+<head>
+{%- block html_head -%}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<!-- SEO -->
+<title>
+    Francisco García Mezano
+</title>
+<meta name="description" content="Profesional con más de 10 años de experiencia en análisis de datos, inteligencia artificial y gestión de equipos de Data. Experto en transformar datos en soluciones estratégicas que impulsan el crecimiento empresarial. Conocimiento avanzado en Machine Learning, Big Data y metodologías ágiles como Scrum."/>
+<meta name="keywords" content="datascience, data, lider, datos, inteligencia artificial, big data"/>
+
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD52TL25DW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZD52TL25DW');
+</script>
+
+
+{%- block html_head_js -%}
+{%- block html_head_js_requirejs -%}
+<script src="{{ resources.require_js_url }}"></script>
+{%- endblock html_head_js_requirejs -%}
+{%- endblock html_head_js -%}
+
+{% block jupyter_widgets %}
+  {%- if "widgets" in nb.metadata -%}
+    {{ jupyter_widgets(resources.jupyter_widgets_base_url, resources.html_manager_semver_range, resources.widget_renderer_url) }}
+  {%- endif -%}
+{% endblock jupyter_widgets %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% for css in resources.inlining.css -%}
+  <style type="text/css">
+    {{ css }}
+  </style>
+{% endfor %}
+
+{% block notebook_css %}
+{{ resources.include_css("static/index.css") }}
+{% if resources.theme == 'dark' %}
+    {{ resources.include_css("static/theme-dark.css") }}
+{% elif resources.theme == 'light'  %}
+    {{ resources.include_css("static/theme-light.css") }}
+{% else %}
+    {{ resources.include_lab_theme(resources.theme) }}
+{% endif %}
+<style type="text/css">
+/* Force rendering true colors when outputing to pdf */
+* {
+  -webkit-print-color-adjust: exact;
+}
+
+/* Misc */
+a.anchor-link {
+  display: none;
+}
+
+.jp-InputPrompt, .jp-OutputPrompt{
+  display: none !important;
+}
+
+.jp-RenderedHTMLCommon, .jp-RenderedHTMLCommon p {
+    text-align: justify !important;
+    text-justify: inter-word;
+    font-size : 1.3em;
+}
+
+.jp-RenderedHTMLCommon p strong {
+    font-size : 0.7em;
+}
+
+cm-editor.cm-s-jupyter .highlight pre {
+    font-size: 0.8em !important;
+}
+
+.jp-RenderedHTMLCommon ul {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 3px solid #1D3557;
+    position: relative;
+    padding-bottom: 0 !important;
+}
+
+h2 {
+    color : #1D3557;
+}
+
+.jp-MarkdownCell div div div hr {
+    border: 0;
+    border-top: 3px solid #1D3557 !important;
+}
+
+/* Input area styling */
+.jp-InputArea {
+  overflow: hidden;
+}
+
+.jp-InputArea-editor {
+  overflow: hidden;
+}
+
+.cm-editor.cm-s-jupyter .highlight pre {
+/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.cm-line */
+  padding: var(--jp-code-padding) 4px;
+  margin: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+
+}
+
+.jp-OutputArea-output pre {
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.jp-RenderedText pre {
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-code-font-size);
+}
+
+/* Hiding the collapser by default */
+.jp-Collapser {
+  display: none;
+}
+
+@page {
+    margin: 0.5in; /* Margin for each printed piece of paper */
+}
+
+@media print {
+  .jp-Cell-inputWrapper,
+  .jp-Cell-outputWrapper {
+    display: block;
+  }
+}
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color : #E6E6E6;
+}
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  font-size: 1.5em;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #1D3557;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #1D3557;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar .nav{
+  display : block;
+  line-height: 1.8;
+}
+
+#sidebar .nav a{
+  background: none;
+  /* border-bottom: 1px solid #455A64; */
+  color: #CFD8DC;
+  font-size: 1em;
+  padding: 16px 24px;
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #ECEFF1;
+}
+
+#sidebar .nav a i{
+  margin-right: 16px;
+}
+
+.img-fluid {
+    max-width: 85%;
+    height: auto;
+}
+
+
+
+</style>
+
+{% endblock notebook_css %}
+
+{%- block html_head_js_mathjax -%}
+{{ mathjax(resources.mathjax_url) }}
+{%- endblock html_head_js_mathjax -%}
+
+{%- block html_head_js_mermaidjs -%}
+{{ mermaid_js(resources.mermaid_js_url) }}
+{%- endblock html_head_js_mermaidjs -%}
+
+{%- block html_head_css -%}
+{%- endblock html_head_css -%}
+
+{%- endblock html_head -%}
+</head>
+{%- endblock header -%}
+
+{%- block body_header -%}
+{% if resources.theme == 'dark' %}
+<body class="jp-Notebook" data-jp-theme-light="false" data-jp-theme-name="JupyterLab Dark">
+{% else %}
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+{% endif %}
+<main>
+<div id="viewport">
+<!-- Sidebar -->
+  <div id="sidebar">
+    <header>
+      <br>
+      <div class="profile">
+        <img src="https://elhogardelbuho.com/assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+        <a href="index.html">Francisco G Mezano</a>
+      </div>
+    </header>
+    <ul class="nav">
+    <hr>
+      <li>
+        <a href="https://elhogardelbuho.com/">
+          <i class="bx bx-home bx-tada-hover"></i> Inicio
+        </a>
+      </li>
+      <li>
+        <a href="https://elhogardelbuho.com/blog">
+          <i class="bx bxl-blogger bx-tada-hover"></i> Mi Blog
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/mezano/">
+          <i class="bx bxl-Linkedin bx-tada-hover"></i> Linkedin
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/Mezano85">
+          <i class="bx bxl-Github bx-tada-hover"></i> Github
+        </a>
+      </li>
+      </ul>
+      <hr>
+  </div>
+
+<div class="container">
+{%- endblock body_header -%}
+
+{% block body_footer %}
+</div>
+</div>
+</main>
+</body>
+{% endblock body_footer %}
+
+{% block footer %}
+{% block footer_js %}
+{% endblock footer_js %}
+{{ super() }}
+</html>
+{% endblock footer %}

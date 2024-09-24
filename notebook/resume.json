@@ -1,0 +1,97 @@
+{
+    "name": "Francisco García Mezano",
+    "titles": ["Data Lead", "Data Manager", "Data Scientist", "DataOps Manager"],
+    "location": "Querétaro, México",
+    "contact": {
+      "email": "mezano@gmail.com",
+      "linkedin": "LinkedIn",
+      "portfolio": "Portafolio"
+    },
+    "about_me": "Soy un líder orientado a resultados, apasionado por generar valor a través de los datos. A lo largo de más de 10 años, he liderado equipos multidisciplinarios en proyectos que maximizan la eficiencia operativa y facilitan la toma de decisiones estratégicas. He aplicado machine learning y técnicas avanzadas para resolver problemas complejos y crear soluciones innovadoras. Creo firmemente que la inteligencia artificial está transformando la forma en que interactuamos con los datos, y su potencial apenas comienza a revelarse. Mi compromiso es continuar aprovechando estas tecnologías para impulsar la innovación y el crecimiento empresarial.",
+    "professional_experience": [
+      {
+        "company": "Nowports",
+        "location": "México",
+        "dates": "Febrero 2022 - Actualidad",
+        "positions": [
+          {
+            "title": "DataOps Manager",
+            "dates": "Agosto 2023 - Actualidad",
+            "responsibilities": "Gestiono equipos de datos responsables de todo el flujo de información, desde el origen hasta la generación de valor. Aseguro la calidad de los datos, la integración de fuentes y la automatización de procesos, transformando los datos en insights accionables alineados con los objetivos estratégicos."
+          },
+          {
+            "title": "Data Team Lead",
+            "dates": "Febrero 2022 - Agosto 2023",
+            "responsibilities": "Lideré un equipo multidisciplinario encargado de la integración de fuentes de datos externas, la automatización de procesos y el desarrollo de modelos de ciencia de datos para optimizar la eficiencia operativa y mejorar la toma de decisiones basada en datos."
+          }
+        ]
+      },
+      {
+        "company": "Storecheck México",
+        "location": "México",
+        "dates": "Marzo 2014 - Febrero 2022",
+        "positions": [
+          {
+            "title": "Data Science Manager",
+            "dates": "Junio 2018 - Febrero 2022",
+            "responsibilities": "Lideré el desarrollo de modelos de machine learning para optimizar rutas de promotores, detectar productos faltantes y pronosticar la demanda. Implementamos un modelo de reconocimiento de imágenes para detectar productos en anaqueles, reduciendo tiempos de captura y permitiendo acciones en tiempo real."
+          },
+          {
+            "title": "Senior Manager Business Intelligence",
+            "dates": "Agosto 2016 - Febrero 2022",
+            "responsibilities": "Desarrollé dashboards automatizados y personalizados para clientes, supervisando la creación de reportes ad-hoc. Añadí el producto de análisis de ventas, aumentando significativamente el volumen de datos gestionados y soportando el crecimiento operativo."
+          },
+          {
+            "title": "Business Intelligence Expert",
+            "dates": "Marzo 2014 - Agosto 2016",
+            "responsibilities": "Lideré la transición de reportes en Excel a un sistema formal de Business Intelligence mediante la implementación de Tableau, mejorando el acceso y consumo de datos por parte de los clientes."
+          }
+        ]
+      },
+      {
+        "company": "Consultor de Riesgos Financieros",
+        "location": "Querétaro, México",
+        "dates": "Marzo 2010 - Diciembre 2012",
+        "positions":  [
+            {
+              "title": "Consultor Independiente",
+              "dates": "Marzo 2010 - Diciembre 2012",
+              "responsibilities": "Asesoré a pequeñas instituciones financieras en análisis de riesgos y creación de informes regulatorios. Implementé estrategias de evaluación crediticia que mejoraron su sostenibilidad financiera."
+         
+            }
+        ]
+      },
+      {
+        "company": "Financiera Ahorros Bienestar",
+        "location": "México",
+        "dates": "Junio 2006 - Febrero 2010",
+        "positions": [
+            {
+              "title": "Administrador de Riesgos y Finanzas",
+              "dates": "Junio 2006 - Febrero 2010",
+              "responsibilities": "Desarrollé el departamento de riesgos, cumpliendo con los requisitos de la CNBV. Implementé un modelo de credit score que mejoró la evaluación crediticia y redujo la exposición al riesgo. Fui responsable de los estados financieros mensuales y su presentación ante la CNBV."
+            }
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Maestría en Big Data",
+        "institution": "Universidad Internacional de La Rioja (UNIR)",
+        "dates": "2023 - Actual",
+        "details": "details in progress"
+      },
+      {
+        "degree": "Licenciado en Estadística",
+        "institution": "Universidad Autónoma Chapingo",
+        "dates": "2001 - 2006",
+        "details": "Me especialicé en Estadística Matemática, Predicción y Pronóstico, y Estadística en Genética, obteniendo una base sólida en análisis de datos y modelos predictivos."
+      }
+    ],
+    "technical_skills": {
+      "languages": ["Python", "SQL", "R"],
+      "tools": ["Redshift", "Airflow", "Flask", "Power BI", "Tableau", "Docker", "PySpark", "Glue", "Git/GitHub", "LangChain", "CrewAI", "Cassandra", "MongoDB"],
+      "methodologies": ["Machine Learning", "Modelos Predictivos", "BI", "DataOps", "Big Data", "Scrum"]
+    }
+  }
+  
