@@ -1,0 +1,128 @@
+/* Estilos para celdas de código */
+.jp-CodeCell {
+    position: relative;
+    overflow: hidden;
+}
+
+.jp-CodeCell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.jp-CodeCell:hover::before {
+    opacity: 1;
+}
+
+/* Estilos para la entrada de código */
+.jp-InputArea {
+    position: relative;
+}
+
+.jp-InputArea-editor {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+/* Estilos para la salida */
+.jp-OutputArea {
+    margin-top: 1rem;
+}
+
+.jp-OutputArea-output {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+/* Estilos para tablas */
+.jp-RenderedHTMLCommon table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td {
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.jp-RenderedHTMLCommon th {
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+}
+
+/* Estilos para listas */
+.jp-RenderedHTMLCommon ul,
+.jp-RenderedHTMLCommon ol {
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.jp-RenderedHTMLCommon li {
+    margin: 0.5rem 0;
+}
+
+/* Estilos para bloques de código */
+.jp-RenderedText pre {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+/* Estilos para imágenes */
+.jp-RenderedImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para enlaces */
+.jp-RenderedHTMLCommon a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.jp-RenderedHTMLCommon a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Estilos para citas */
+.jp-RenderedHTMLCommon blockquote {
+    border-left: 4px solid var(--accent-color);
+    margin: 1rem 0;
+    padding-left: 1rem;
+    color: var(--secondary-color);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.jp-Cell {
+    animation: fadeIn 0.5s ease-out;
+} 
