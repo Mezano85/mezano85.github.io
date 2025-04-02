@@ -34,7 +34,6 @@
   gtag('config', 'G-ZD52TL25DW');
 </script>
 
-
 {%- block html_head_js -%}
 {%- block html_head_js_requirejs -%}
 <script src="{{ resources.require_js_url }}"></script>
@@ -121,15 +120,12 @@ h2 {
 }
 
 .cm-editor.cm-s-jupyter .highlight pre {
-/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.cm-line */
   padding: var(--jp-code-padding) 4px;
   margin: 0;
-
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   color: inherit;
-
 }
 
 .jp-OutputArea-output pre {
@@ -148,7 +144,7 @@ h2 {
 }
 
 @page {
-    margin: 0.5in; /* Margin for each printed piece of paper */
+    margin: 0.5in;
 }
 
 @media print {
@@ -158,77 +154,293 @@ h2 {
   }
 }
 
+/* Estilos modernos para la barra lateral y el contenido */
 #viewport {
-  padding-left: 250px;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  background-color : #E6E6E6;
+    padding-left: 300px;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
 }
 
 #sidebar {
-  z-index: 1000;
-  position: fixed;
-  font-size: 1.5em;
-  left: 250px;
-  width: 250px;
-  height: 100%;
-  margin-left: -250px;
-  overflow-y: auto;
-  background: #1D3557;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+    z-index: 1000;
+    position: fixed;
+    font-size: 1.1em;
+    left: 300px;
+    width: 300px;
+    height: 100%;
+    margin-left: -300px;
+    overflow-y: auto;
+    background: linear-gradient(180deg, #1D3557 0%, #2C5282 100%);
+    transition: all 0.3s ease;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
 }
 
 #sidebar header {
-  background-color: #1D3557;
-  font-size: 20px;
-  line-height: 52px;
-  text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #sidebar header a {
-  color: #fff;
-  display: block;
-  text-decoration: none;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar header a:hover {
-  color: #fff;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
 }
 
-#sidebar .nav{
-  display : block;
-  line-height: 1.8;
+.profile {
+    margin-bottom: 2rem;
 }
 
-#sidebar .nav a{
-  background: none;
-  /* border-bottom: 1px solid #455A64; */
-  color: #CFD8DC;
-  font-size: 1em;
-  padding: 16px 24px;
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
-#sidebar .nav a:hover{
-  background: none;
-  color: #ECEFF1;
+.profile img:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
-#sidebar .nav a i{
-  margin-right: 16px;
+#sidebar .nav {
+    display: block;
+    padding: 1rem 0;
+}
+
+#sidebar .nav a {
+    background: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1em;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+#sidebar .nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left: 3px solid #4299E1;
+    padding-left: 2.5rem;
+}
+
+#sidebar .nav a i {
+    margin-right: 1rem;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+#sidebar .nav a:hover i {
+    transform: scale(1.1);
+}
+
+#sidebar hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 1rem 0;
+}
+
+.container {
+    max-width: 100% !important;
+    padding: 2rem !important;
+}
+
+.jp-Cell {
+    background: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.jp-Cell:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .img-fluid {
     max-width: 85%;
     height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+    #viewport {
+        padding-left: 0;
+    }
+    
+    #sidebar {
+        left: 0;
+        width: 100%;
+        margin-left: -100%;
+        transform: translateX(-100%);
+    }
+    
+    #sidebar.active {
+        transform: translateX(0);
+    }
+}
 
+/* Estilos para secciones */
+.jp-MarkdownCell {
+    padding: 2rem;
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    margin: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
 
+/* Crear secciones solo cuando hay H1 o H2 */
+.jp-MarkdownCell:has(h1),
+.jp-MarkdownCell:has(h2) {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Agrupar celdas que siguen hasta el próximo H1 o H2 */
+.jp-Cell:not(:has(h1)):not(:has(h2)) + .jp-Cell:not(:has(h1)):not(:has(h2)),
+.jp-MarkdownCell:has(h1) + .jp-Cell:not(:has(h1)):not(:has(h2)),
+.jp-MarkdownCell:has(h2) + .jp-Cell:not(:has(h1)):not(:has(h2)) {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Ajuste especial para la primera sección */
+.jp-Notebook > .jp-Cell:first-child {
+    margin-top: 0 !important;
+}
+
+.jp-Notebook > .jp-Cell:first-child + .jp-Cell:not(:has(h1)):not(:has(h2)) {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    background: #fff;
+}
+
+/* Ajuste para las celdas de código */
+.jp-CodeCell {
+    background: #fff;
+    padding: 1.5rem;
+    margin: 0;
+    border-radius: 0;
+}
+
+/* Último elemento antes de una nueva sección */
+.jp-Cell:has(+ .jp-MarkdownCell:has(h1)),
+.jp-Cell:has(+ .jp-MarkdownCell:has(h2)) {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+/* Último elemento de una sección */
+.jp-Cell:last-child,
+.jp-Cell:has(+ .jp-MarkdownCell:has(h1)),
+.jp-Cell:has(+ .jp-MarkdownCell:has(h2)) {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Ajuste para el contenedor principal */
+#notebook-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Eliminar márgenes y bordes duplicados */
+.jp-Cell {
+    margin: 0;
+}
+
+.jp-Cell + .jp-Cell {
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Estilos para la sección de introducción */
+.jp-Notebook > .jp-Cell:first-child {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.jp-Notebook > .jp-Cell:first-child h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1D3557;
+    position: relative;
+}
+
+.jp-Notebook > .jp-Cell:first-child h1::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, #1D3557, #2C5282);
+    border-radius: 2px;
+}
+
+.jp-Notebook > .jp-Cell:first-child ul {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    border: none;
+}
+
+.jp-Notebook > .jp-Cell:first-child ul li {
+    font-size: 1.5rem;
+    color: #2C5282;
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.jp-Notebook > .jp-Cell:first-child ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #1D3557;
+}
+
+/* Ajuste para el resto de las celdas */
+.jp-Notebook > .jp-Cell:not(:first-child) {
+    margin-top: 2rem;
+}
 </style>
 
 {% endblock notebook_css %}
@@ -249,47 +461,42 @@ h2 {
 {%- endblock header -%}
 
 {%- block body_header -%}
-{% if resources.theme == 'dark' %}
-<body class="jp-Notebook" data-jp-theme-light="false" data-jp-theme-name="JupyterLab Dark">
-{% else %}
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-{% endif %}
 <main>
 <div id="viewport">
 <!-- Sidebar -->
-  <div id="sidebar">
+<div id="sidebar">
     <header>
-      <br>
-      <div class="profile">
-        <img src="https://elhogardelbuho.com/assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <a href="index.html">Francisco G Mezano</a>
-      </div>
+        <div class="profile">
+            <img src="https://elhogardelbuho.com/assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+            <a href="index.html">Francisco G Mezano</a>
+        </div>
     </header>
     <ul class="nav">
     <hr>
-      <li>
-        <a href="https://elhogardelbuho.com/">
-          <i class="bx bx-home bx-tada-hover"></i> Inicio
-        </a>
-      </li>
-      <li>
-        <a href="https://elhogardelbuho.com/blog">
-          <i class="bx bxl-blogger bx-tada-hover"></i> Mi Blog
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/mezano/">
-          <i class="bx bxl-Linkedin bx-tada-hover"></i> Linkedin
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/Mezano85">
-          <i class="bx bxl-Github bx-tada-hover"></i> Github
-        </a>
-      </li>
-      </ul>
-      <hr>
-  </div>
+        <li>
+            <a href="https://elhogardelbuho.com/">
+                <i class="bx bx-home bx-tada-hover"></i> Inicio
+            </a>
+        </li>
+        <li>
+            <a href="https://elhogardelbuho.com/blog">
+                <i class="bx bxl-blogger bx-tada-hover"></i> Mi Blog
+            </a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/mezano/">
+                <i class="bx bxl-linkedin bx-tada-hover"></i> Linkedin
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/Mezano85">
+                <i class="bx bxl-github bx-tada-hover"></i> Github
+            </a>
+        </li>
+    </ul>
+    <hr>
+</div>
 
 <div class="container">
 {%- endblock body_header -%}

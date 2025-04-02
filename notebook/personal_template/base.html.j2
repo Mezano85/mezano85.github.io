@@ -2,6 +2,431 @@
 {% from 'celltags.j2' import celltags %}
 {% from 'cell_id_anchor.j2' import cell_id_anchor %}
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi CV - El Hogar del Búho</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0A192F;
+            --secondary-color: #112240;
+            --accent-color: #64FFDA;
+            --text-primary: #CCD6F6;
+            --text-secondary: #8892B0;
+            --background-light: #FFFFFF;
+            --background-dark: #0A192F;
+            --section-height: 100vh;
+            --neon-glow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: var(--background-dark);
+                --text: var(--text-primary);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --background: var(--background-light);
+                --text: var(--text-primary);
+            }
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(100, 255, 218, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navegación Superior */
+        .navbar {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 25, 47, 0.95);
+            box-shadow: var(--neon-glow);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
+        }
+
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            margin: 0 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+            box-shadow: var(--neon-glow);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Contenedor Principal */
+        .main-container {
+            margin-top: 80px;
+            padding: 0;
+        }
+
+        /* Secciones */
+        .section {
+            min-height: var(--section-height);
+            padding: 4rem 2rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: rgba(17, 34, 64, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            margin: 2rem 0;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Celdas del Notebook */
+        .jp-Cell {
+            background: rgba(17, 34, 64, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .jp-Cell::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .jp-Cell:hover::before {
+            transform: translateX(100%);
+        }
+
+        .jp-Cell:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Títulos de Sección */
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            text-shadow: var(--neon-glow);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 3px;
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Contenido */
+        .jp-MarkdownCell {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .jp-CodeCell {
+            background: rgba(17, 34, 64, 0.7);
+        }
+
+        .jp-InputArea-editor {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            background: rgba(17, 34, 64, 0.5);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text);
+        }
+
+        .jp-OutputArea-output {
+            margin-top: 1rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: rgba(17, 34, 64, 0.3);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        /* Imágenes */
+        .jp-RenderedImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Tipografía */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-shadow: var(--neon-glow);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        /* Enlaces */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            text-shadow: var(--neon-glow);
+        }
+
+        a:hover {
+            color: var(--text);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+            box-shadow: var(--neon-glow);
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* Efectos de IA */
+        .ai-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 70%),
+                linear-gradient(45deg, transparent 0%, rgba(100, 255, 218, 0.05) 50%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
+            animation: aiPulse 4s infinite;
+        }
+
+        @keyframes aiPulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .jp-Cell {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación Superior -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot me-2"></i>
+                El Hogar del Búho
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experiencia">Experiencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#educacion">Educación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#habilidades">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <div class="main-container">
+        <div class="ai-effect"></div>
+        {{ super() }}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scroll para la navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto de navbar al hacer scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
+
+{% block markdowncell scoped %}
+<div {{ cell_id_anchor(cell) }} class="jp-Cell jp-MarkdownCell jp-Notebook-cell section" data-aos="fade-up">
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Cell-inputArea">
+            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput {{ celltags(cell) }}" data-mime-type="text/markdown">
+                {%- if resources.should_sanitize_html %}
+                {%- set html_value=cell.source  | markdown2html | strip_files_prefix | clean_html -%}
+                {%- else %}
+                {%- set html_value=cell.source  | markdown2html | strip_files_prefix -%}
+                {%- endif %}
+                {{ html_value }}
+            </div>
+        </div>
+    </div>
+</div>
+{%- endblock markdowncell %}
+
 {% block codecell %}
 {%- if not cell.outputs -%}
 {%- set no_output_class="jp-mod-noOutputs" -%}
@@ -9,7 +434,7 @@
 {%- if not resources.global_content_filter.include_input -%}
 {%- set no_input_class="jp-mod-noInput" -%}
 {%- endif -%}
-<div {{ cell_id_anchor(cell) }} class="jp-Cell jp-CodeCell jp-Notebook-cell {{ no_output_class }} {{ no_input_class }} {{ celltags(cell) }}">
+<div {{ cell_id_anchor(cell) }} class="jp-Cell jp-CodeCell jp-Notebook-cell section {{ no_output_class }} {{ no_input_class }} {{ celltags(cell) }}" data-aos="fade-up">
 {{ super() }}
 </div>
 {%- endblock codecell %}
@@ -92,28 +517,6 @@
 {{ super() }}
 </div>
 {% endblock output %}
-
-{% block markdowncell scoped %}
-<div {{ cell_id_anchor(cell) }} class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-{%- if resources.global_content_filter.include_input_prompt-%}
-    {{ self.empty_in_prompt() }}
-{%- endif -%}
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput {{ celltags(cell) }}" data-mime-type="text/markdown">
-{%- if resources.should_sanitize_html %}
-{%- set html_value=cell.source  | markdown2html | strip_files_prefix | clean_html -%}
-{%- else %}
-{%- set html_value=cell.source  | markdown2html | strip_files_prefix -%}
-{%- endif %}
-{{ html_value }}
-</div>
-</div>
-</div>
-</div>
-{%- endblock markdowncell %}
 
 {% block rawcell scoped %}
 {%- if cell.metadata.get('raw_mimetype', '').lower() in resources.get('raw_mimetypes', ['']) -%}

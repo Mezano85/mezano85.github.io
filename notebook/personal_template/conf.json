@@ -1,11 +1,21 @@
 {
   "base_template": "base",
   "mimetypes": {
-    "text/html": true
+    "text/html": true,
+    "text/markdown": true,
+    "text/plain": true,
+    "image/png": true,
+    "image/jpeg": true,
+    "image/svg+xml": true,
+    "text/vnd.mermaid": true
   },
   "preprocessors": {
     "100-pygments": {
       "type": "nbconvert.preprocessors.CSSHTMLHeaderPreprocessor",
+      "enabled": true
+    },
+    "200-highlight": {
+      "type": "nbconvert.preprocessors.HighlightMagicsPreprocessor",
       "enabled": true
     }
   }
